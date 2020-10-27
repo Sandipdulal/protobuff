@@ -1,0 +1,74 @@
+// The syntax for this file is proto3
+syntax = "proto3";
+
+package person;
+
+/*
+* every field defined in Person will have a default value
+int32=0
+bool=false
+string=empty
+enum=first value
+ */
+
+message Person {
+  int32  age=1;
+  string first_name =2;
+  repeated string middle_names=9;
+  string last_name=3;
+  bytes small_picture=4; // small picture reprensts .jpg file
+  bool is_profile_verified=5;
+  float height=6; // height in cms
+  repeated string phone_numbers =7; // repeated is used to define list or array types
+
+  enum EyeColor{
+    UNKNOWN_COLOR=0;
+    EYE_GREEN=1;
+    EYE_BROWN=2;
+    EYE_BLUE=3;
+  }
+
+  EyeColor eye_color=8;
+  Date birthday=10;
+
+  //define nested type address in person
+  message Address {
+    string address_line_1=1;
+    string  address_line_2=2;
+    string city=3;
+    string zip_code=4;
+    string country=5;
+  }
+
+  repeated Address address=11;
+}
+
+
+
+message Altitude{
+  double latitude=1;
+  double longitude=2;
+}
+
+message Money {
+  string currency_code=1;
+  int64 integral_amount=2;
+  int32 decimal_amount=3;
+}
+
+enum DayOfWeek {
+  UNDEFINED=0;
+  MONDAY=1;
+  TUESDAY=2;
+  WEDNESDAY=3;
+  THURSDAY=4;
+  FRIDAY=5;
+  SATURDAY=6;
+  SUNDAY=7;
+}
+
+message Date {
+  int32 year=1;
+  int32 month=2;
+  int32 day=3;
+}
